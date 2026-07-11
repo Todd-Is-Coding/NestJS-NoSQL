@@ -10,16 +10,26 @@ services:
       POSTGRES_PASSWORD: pass123
       POSTGRES_DB: nestjs-db
     volumes:
-      - nestjs_postgres_db:/data/postgres
+      - nestjs_postgres_db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5433:5432"
+
+  mongodb:
+    image: mongo:latest
+    container_name: nestjs-database-connection-mongo-db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - nestjs_mongo_db:/data/db
 
   adminer:
     image: adminer
     container_name: nestjs-database-connection-adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
 
 volumes:
   nestjs_postgres_db:
+  nestjs_mongo_db:
