@@ -3,6 +3,7 @@ import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import * as Joi from 'joi';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import * as Joi from 'joi';
       }),
     }),
     DatabaseModule,
+    UsersModule,
   ],
   providers: [{ provide: APP_PIPE, useClass: ValidationPipe }],
 })
