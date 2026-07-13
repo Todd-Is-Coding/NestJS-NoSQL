@@ -30,7 +30,10 @@ export class UserService {
     return newUser;
   }
 
-  async updateUser(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+  async updateUser(
+    id: string,
+    updateUserDto: UpdateUserDto,
+  ): Promise<User> {
     const updatedUser = await this.user
       .findByIdAndUpdate(id, updateUserDto, {
         new: true,
